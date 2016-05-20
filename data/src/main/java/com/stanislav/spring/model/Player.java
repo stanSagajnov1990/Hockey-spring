@@ -8,6 +8,8 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -63,11 +65,10 @@ public class Player implements Serializable {
 	@OneToMany(mappedBy="player")
 	private List<PlayerStatistics> playerStatistics = new ArrayList<PlayerStatistics>();
 	
-//	@Enumerated(EnumType.STRING)
-//	@Column(name="PLAYER_TYPE")
-//	private PlayerType playerType;
+	@Enumerated(EnumType.STRING)
+	@Column(name="PLAYER_TYPE")
+	private PlayerType playerType;
 	
-//	@Transient
 	@Formula("concat(height/12,'''',height%12,'''''')")
 	private String formattedHeight;
 	
@@ -179,12 +180,16 @@ public class Player implements Serializable {
 	public void setPlayerStatistics(List<PlayerStatistics> playerStatistics) {
 		this.playerStatistics = playerStatistics;
 	}
+	
+	public PlayerType getPlayerType() {
+		return playerType;
+	}
+	
+	public void setPlayerType(PlayerType playerType) {
+		this.playerType = playerType;
+	}
 
 	public String getFormattedHeight() {
-//		if(formattedHeight == null){
-//			int feet = height / 12;
-//			formattedHeight = ""+feet+"' "+height%12+"''";
-//		}
 		return formattedHeight;
 	}
 	
