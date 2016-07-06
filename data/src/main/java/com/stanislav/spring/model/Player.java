@@ -64,6 +64,9 @@ public class Player implements Serializable {
 	//TODO write UnitTest for Fetch Eager and Lazy
 	@OneToMany(mappedBy="player")
 	private List<PlayerStatistics> playerStatistics = new ArrayList<PlayerStatistics>();
+	@OneToMany(mappedBy="player")
+	private List<GoalieStatistics> goalieStatistics = new ArrayList<GoalieStatistics>();
+
 	
 	@Enumerated(EnumType.STRING)
 	@Column(name="PLAYER_TYPE")
@@ -179,6 +182,14 @@ public class Player implements Serializable {
 	
 	public void setPlayerStatistics(List<PlayerStatistics> playerStatistics) {
 		this.playerStatistics = playerStatistics;
+	}
+	
+	public List<GoalieStatistics> getGoalieStatistics() {
+		return goalieStatistics;
+	}
+	
+	public void setGoalieStatistics(List<GoalieStatistics> goalieStatistics) {
+		this.goalieStatistics = goalieStatistics;
 	}
 	
 	public PlayerType getPlayerType() {

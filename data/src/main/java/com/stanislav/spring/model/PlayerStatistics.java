@@ -21,7 +21,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="PLAYER_STATISTICS")
-public class PlayerStatistics implements Serializable {
+public class PlayerStatistics extends Statistics implements Serializable {
 	
 	/**
 	 * 
@@ -34,12 +34,6 @@ public class PlayerStatistics implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="PLAYER_ID",nullable=false)
 	private Player player;
-	@Column(name="YEAR")
-	private Integer year;
-	@Column(name="PLAYOFF_STATISTICS")
-	private boolean playoffStatistics;
-	@Column(name="GAMES_PLAYED")
-	private Integer gamesPlayed;
 	@Column(name="GOALS")
 	private Integer goals;
 	@Column(name="ASSISTS")
@@ -69,9 +63,6 @@ public class PlayerStatistics implements Serializable {
 	@Column(name="FACEOFF_WIN_PERCENTAGE", columnDefinition="decimal", precision=18, scale=2)
 	private BigDecimal faceoffWinPercentage;
 	
-	@ManyToOne
-	@JoinColumn(name="TEAM_ID",nullable=false)
-	private Team team;
 	
 	public Long getId() {
 		return id;
@@ -89,30 +80,6 @@ public class PlayerStatistics implements Serializable {
 		this.player = player;
 	}
 	
-	public Integer getYear() {
-		return year;
-	}
-	
-	public void setYear(Integer year) {
-		this.year = year;
-	}
-	
-	public boolean isPlayoffStatistics() {
-		return playoffStatistics;
-	}
-	
-	public void setPlayoffStatistics(boolean playoffStatistics) {
-		this.playoffStatistics = playoffStatistics;
-	}
-
-	public Integer getGamesPlayed() {
-		return gamesPlayed;
-	}
-
-	public void setGamesPlayed(Integer gamesPlayed) {
-		this.gamesPlayed = gamesPlayed;
-	}
-
 	public Integer getGoals() {
 		return goals;
 	}
@@ -225,12 +192,4 @@ public class PlayerStatistics implements Serializable {
 		this.faceoffWinPercentage = faceoffWinPercentage;
 	}
 
-	public Team getTeam() {
-		return team;
-	}
-
-	public void setTeam(Team team) {
-		this.team = team;
-	}
-	
 }

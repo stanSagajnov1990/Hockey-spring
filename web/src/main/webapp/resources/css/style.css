@@ -1,0 +1,22 @@
+body {
+	font-family: Sintony;
+	margin: 0px;
+}
+
+#personal_info span {
+	padding: 5px;
+	font-size: 20px;
+}
+
+#table_info span {
+	padding: 10px;
+	font-size: 20px;
+}
+
+#table_info th, td {
+	padding: 5px;
+}
+
+.score {
+	font-size: 25px;
+}

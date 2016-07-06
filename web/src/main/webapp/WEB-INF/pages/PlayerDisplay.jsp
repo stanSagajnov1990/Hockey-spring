@@ -7,31 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>${player.name}</title>
-<style type="text/css">
-body {
-	font-family: Sintony;
-	margin: 0px;
-}
-
-#personal_info span {
-	padding: 5px;
-	font-size: 20px;
-}
-
-#table_info span {
-	padding: 10px;
-	font-size: 20px;
-}
-
-#table_info th, td {
-	padding: 5px;
-}
-
-.score {
-	font-size: 25px;
-}
-</style>
-
+<link rel="stylesheet" href="<spring:url value="/resources/css/style.css"/>">
 </head>
 <body>
 	<div>
@@ -68,20 +44,23 @@ body {
 		<div style="margin-left: auto; margin-right: auto; width: 450px;">
 			<img src="${player.imageUrl }"
 				style="border-radius: 50%; display: block; margin-left: auto; margin-right: auto; display: block; margin-left: auto; margin-right: auto;" />
-			<span
-				style="font-size: 35px; font-family: Sintony; font-weight: bold; margin-top: 10px; margin-left: auto; margin-right: auto; display: block; width: auto;">
-				${player.name } | #${player.number} </span> <span
-				style="font-size: 20px; font-weight: bold; color: #868686; display: block; margin-top: 10px;">
-				${player.position } | ${player.formattedHeight} | ${player.weight}
-				lb | Age: ${player.age } | ${player.team.name }</span>
+			<div>
+				<span
+					style="width: auto; font-size: 35px; font-family: Sintony; font-weight: bold; margin-top: 10px; margin-left: auto; margin-right: auto; display: table; width: auto;">
+					${player.name } | #${player.number} </span> 
+				<span
+					style="width: auto; font-size: 20px; font-weight: bold; color: #868686; display: block; margin: 10px auto;">
+					${player.position } | ${player.formattedHeight} | ${player.weight}
+					lb | Age: ${player.age } | ${player.team.name }</span>
+			</div>
 		</div>
 	</div>
 	<div style="padding: 20px; border-top: thick solid #C0C0C0;">
 		<div id="personal_info"
-			style="width: 35%; float: left; display: inline-block;">
-			<span style="display: inline-block;"><b>${ player.name}</b></span> <span
-				style="display: block;"><b>Born: </b>${player.birthdate }</span> <span
-				style="display: block;"><b>Birthplace: </b>${player.birthplace }</span>
+			style="width: 35%; display: inline-block;">
+			<span style="display: inline-block;"><b>${ player.name}</b></span><br> 
+			<span style="display: block;"><b>Born: </b>${player.birthdate }</span><br> 
+			<span style="display: block;"><b>Birthplace: </b>${player.birthplace }</span>
 		</div>
 		<div id="table_info" style="display: inline-block;">
 			<table>

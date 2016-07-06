@@ -1,7 +1,9 @@
 package com.stanislav.spring.web;
 
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Locale;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,6 +38,10 @@ public class PlayerDisplayController {
 		logger.info("show User with id: "+playerId);
 		Player player = playerService.findById(playerId);
 		
+		if(player == null){
+			return new ModelAndView("redirect:/all_players.htm");
+		}
+		
 		model.addObject("player", player);
 		List<PlayerStatistics> playerStatistics = player.getPlayerStatistics();
 		for(PlayerStatistics statistic : playerStatistics){
@@ -47,7 +53,7 @@ public class PlayerDisplayController {
 			} 
 		}
 		
-		java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("y/MM/dd", java.util.Locale.ENGLISH);
+		SimpleDateFormat sdf = new SimpleDateFormat("y/MM/dd", Locale.ENGLISH);
 		List<Game> games = null;
 		try {
 			games = gameService.getGamesByDate(sdf.parse("2016/02/02"));
@@ -55,6 +61,12 @@ public class PlayerDisplayController {
 			e.printStackTrace();
 		}
 		model.addObject("games", games);
+		
+		Object[] resultSeason = playerService.getSumOfPlayerStatistics(player, true);
+		Object[] resultPlayoff = playerService.getSumOfPlayerStatistics(player, false);
+		
+		model.addObject("sumOfSeasons", resultSeason);
+		model.addObject("sumOfPlayoffs", resultPlayoff);
 
 		return model;
 	}
