@@ -40,7 +40,7 @@ public class Game implements Serializable {
 	@Column(name="AWAY_TEAM_SCORE")
 	private Integer awayTeamScore;
 	@Column(name="GAME_DATE")
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date gameDate;
 	@Column(name="OT")
 	private boolean winInOvertime;
