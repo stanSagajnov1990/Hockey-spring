@@ -7,9 +7,8 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.Convert;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,6 +21,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.Formula;
+
+import com.stanislav.spring.model.converter.PlayerTypeConverter;
 
 @NamedQueries({
 	@NamedQuery(query = "SELECT p FROM Player p WHERE p.name = :name", name="Player.findByName"),
@@ -67,9 +68,8 @@ public class Player implements Serializable {
 	@OneToMany(mappedBy="player")
 	private List<GoalieStatistics> goalieStatistics = new ArrayList<GoalieStatistics>();
 
-	
-	@Enumerated(EnumType.STRING)
-	@Column(name="PLAYER_TYPE")
+	@Convert(converter = PlayerTypeConverter.class)
+	@Column(name="PLAYER_TYPE", columnDefinition="char")
 	private PlayerType playerType;
 	
 	@Formula("concat(height/12,'''',height%12,'''''')")
@@ -195,7 +195,7 @@ public class Player implements Serializable {
 	public PlayerType getPlayerType() {
 		return playerType;
 	}
-	
+
 	public void setPlayerType(PlayerType playerType) {
 		this.playerType = playerType;
 	}
