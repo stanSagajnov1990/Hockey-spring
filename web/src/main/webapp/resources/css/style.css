@@ -3,10 +3,46 @@ body {
 	margin: 0px;
 }
 
+#personal_info {
+	width: 35%; 
+	float: left;
+}
+
 #personal_info span {
 	padding: 5px;
 	font-size: 20px;
+	display: inline-block;
 }
+
+#player-info > div {
+	margin-left: auto; 
+	margin-right: auto; 
+	width: 450px;
+}
+
+#player-name {
+	font-size: 35px; 
+	font-family: Sintony; 
+	font-weight: bold; 
+	margin-top: 10px; 
+	margin-left: auto; 
+	margin-right: auto; 
+	display: table; 
+	width: auto;
+}
+
+#player-secondLine {
+	font-size: 20px; 
+	font-weight: bold; 
+	color: #868686; 
+	display: table; 
+	margin-top: 10px;
+}
+
+#table_info {
+	float: right;
+	display: inline-block;
+}	
 
 #table_info span {
 	padding: 10px;
@@ -17,6 +53,50 @@ body {
 	padding: 5px;
 }
 
+#table_info table {
+	border-spacing: 0px;	
+}
+	
+
 .score {
 	font-size: 25px;
+	padding: 10px;
+	vertical-align: super;
+}
+
+#player-stage {
+	background-color: black;
+}
+
+#player-info {
+	position: relative; 
+	top: -100px;
+}
+
+#player-image {
+	border-radius: 50%; 
+	display: block; 
+	margin-left: auto; 
+	margin-right: auto; 
+	display: block; 
+	margin-left: auto; 
+	margin-right: auto;
+}
+
+#player-addInfo{
+	padding: 20px; 
+	border-top: thick solid #C0C0C0;
+	/*float:left;*/
+}
+
+#player-foto {
+	margin-left: auto; 
+	margin-right: auto; 
+	display: block;
+}
+
+.team_logo {
+	height: 40px; 
+	width: 50px;
+	display: inline-block;
 }

@@ -2,7 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -12,19 +13,26 @@
 <body>
 	<div>
 		<c:forEach var="listEntry" items="${games}">
-			<div style="height: 70px;width:70px;display:inline-block;">
-			<c:out value="${listEntry.homeTeam.logoSmallAsString}" escapeXml="false"/>
+			<div style="padding: 10px; border: 1px solid black; display: inline-block; width: auto;padding-right:25px;">
+			<div class="team_logo">
+				<c:out value="${listEntry.homeTeam.logoSmallAsString}" escapeXml="false"/>
 			</div>
-			<c:out value="${listEntry.homeTeam.name}" /> 
-			<span class="score">
-			<c:out value="${listEntry.homeTeamScore}" /> 
-			</span>	: 
-			<span class="score">
-			<c:out value="${listEntry.awayTeamScore}" /> 
+			<span style="vertical-align: super;position:relative; top: -3px;">
+				<c:out value="${fn:toUpperCase(listEntry.homeTeam.token)}" />
 			</span>
-			<c:out value="${listEntry.awayTeam.name}" /> 
-			<div style="height: 70px;width:70px;display:inline-block;">
-			<c:out value="${listEntry.awayTeam.logoSmallAsString}" escapeXml="false"/>
+			<span class="score">
+				<c:out value="${listEntry.homeTeamScore}" /> 
+			</span>
+			<br>
+			<div class="team_logo">
+				<c:out value="${listEntry.awayTeam.logoSmallAsString}" escapeXml="false"/>
+			</div>
+			<span style="vertical-align: super;position:relative; top: -3px;">
+				<c:out value="${fn:toUpperCase(listEntry.awayTeam.token)}" />
+			</span>
+			<span class="score">
+				<c:out value="${listEntry.awayTeamScore}" /> 
+			</span>
 			</div>
 			
 			<br>
@@ -36,36 +44,29 @@
 			NHL
 		</a>
 	</div>
-	<div style="background: black;">
-		<img src="${player.bigImageUrl }"
-			style="margin-left: auto; margin-right: auto; display: block;" />
+	<div id="player-stage">
+		<div style="background: url('${player.bigImageUrl }') no-repeat; width=1000px; height:500px;"></div>
 	</div>
-	<div style="position: relative; top: -100px">
-		<div style="margin-left: auto; margin-right: auto; width: 450px;">
-			<img src="${player.imageUrl }"
-				style="border-radius: 50%; display: block; margin-left: auto; margin-right: auto; display: block; margin-left: auto; margin-right: auto;" />
-			<div>
-				<span
-					style="width: auto; font-size: 35px; font-family: Sintony; font-weight: bold; margin-top: 10px; margin-left: auto; margin-right: auto; display: table; width: auto;">
-					${player.name } | #${player.number} </span> 
-				<span
-					style="width: auto; font-size: 20px; font-weight: bold; color: #868686; display: block; margin: 10px auto;">
-					${player.position } | ${player.formattedHeight} | ${player.weight}
-					lb | Age: ${player.age } | ${player.team.name }</span>
-			</div>
+	<div id="player-info">
+		<div>
+			<img id="player-image" src="${player.imageUrl }" />
+				<span id="player-name">
+					${player.name } | #${player.number} 
+				</span> 
+				<span id="player-secondLine">
+					${player.position } | ${player.formattedHeight} | ${player.weight} lb | Age: ${player.age } | ${player.team.name }</span>
 		</div>
 	</div>
-	<div style="padding: 20px; border-top: thick solid #C0C0C0;">
-		<div id="personal_info"
-			style="width: 35%; display: inline-block;">
-			<span style="display: inline-block;"><b>${ player.name}</b></span><br> 
-			<span style="display: block;"><b>Born: </b>${player.birthdate }</span><br> 
-			<span style="display: block;"><b>Birthplace: </b>${player.birthplace }</span>
+	<div id="player-addInfo">
+		<div id="personal_info">
+			<span style=""><b>${ player.name}</b></span><br> 
+			<span style=""><b>Born: </b>${player.birthdate }</span><br> 
+			<span style=""><b>Birthplace: </b>${player.birthplace }</span>
 		</div>
-		<div id="table_info" style="display: inline-block;">
+		<div id="table_info">
 			<table>
-				<thead>
-					<tr style="color: white; background-color: black;">
+				<thead style="color: white; background-color: black;">
+					<tr>
 						<th><span>Season</span></th>
 						<th><span>GP</span></th>
 						<th><span>G</span></th>
