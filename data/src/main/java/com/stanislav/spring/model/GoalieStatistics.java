@@ -21,7 +21,8 @@ public class GoalieStatistics extends Statistics {
 	@Column(name="GS_ID")
 	private Long id;
   
-	@ManyToOne	@JoinColumn(name="PLAYER_ID",nullable=false)
+	@ManyToOne	
+	@JoinColumn(name="PLAYER_ID",nullable=false)
 	private Player player;
   
 	@Column(name="GAMES_STARTED")
