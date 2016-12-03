@@ -20,29 +20,39 @@ public class GoalieStatistics extends Statistics {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="GS_ID")
 	private Long id;
-	@ManyToOne
-	@JoinColumn(name="PLAYER_ID",nullable=false)
+  
+	@ManyToOne	@JoinColumn(name="PLAYER_ID",nullable=false)
 	private Player player;
+  
 	@Column(name="GAMES_STARTED")
 	private Integer gamesStarted;
+  
 	@Column(name="WINS")
 	private Integer wins;
+  
 	@Column(name="LOSSES")
 	private Integer losses;
+  
 	@Column(name="OVERTIME_LOSSES")
 	private Integer overtimeLosses;
+  
 	@Column(name="SHOTS_AGAINST")
 	private Integer shotsAgainst;
+  
 	@Column(name="GOALS_AGAINST")
 	private Integer goalsAgainst;
 	@Column(name="GOALS_AGAINST_AVERAGE", columnDefinition="decimal", precision=18, scale=2)
 	private BigDecimal goalsAgainstAverage;
+  
 	@Column(name="SAVES")
 	private Integer saves;
+  
 	@Column(name="SAVE_PERCENTAGE", columnDefinition="decimal", precision=19, scale=3)
 	private BigDecimal savePercentage;
+  
 	@Column(name="SHUTOUTS")
 	private Integer shutouts;
+  
 	@Column(name="MINUTES")
 	private Integer minutes;
 	
