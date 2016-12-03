@@ -11,10 +11,13 @@ public abstract class Statistics {
 
 	@Column(name = "YEAR")
 	protected Integer year;
+  
 	@Column(name = "PLAYOFF_STATISTICS")
 	protected boolean playoffStatistics;
+  
 	@Column(name = "GAMES_PLAYED")
 	protected Integer gamesPlayed;
+  
 	@ManyToOne
 	@JoinColumn(name="TEAM_ID",nullable=false)
 	protected Team team;

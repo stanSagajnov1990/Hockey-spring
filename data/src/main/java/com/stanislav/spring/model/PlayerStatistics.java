@@ -1,4 +1,4 @@
-package com.stanislav.spring.model;
+70package com.stanislav.spring.model;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -27,39 +27,55 @@ public class PlayerStatistics extends Statistics implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = -4887123564231595970L;
+  
 	@Id 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="PS_ID")
 	private Long id;
+  
 	@ManyToOne
 	@JoinColumn(name="PLAYER_ID",nullable=false)
 	private Player player;
+  
 	@Column(name="GOALS")
 	private Integer goals;
+  
 	@Column(name="ASSISTS")
 	private Integer assists;
+  
 	@Column(name="POINTS")
 	private Integer points;
+  
 	@Column(name="PLUS_MINUS")
 	private Integer plusminus;
+  
 	@Column(name="PENALTY_IN_MINUTES")
 	private Integer penaltyInMinutes;
+  
 	@Column(name="POWERPLAY_GOALS")
 	private Integer powerPlayGoals;
+  
 	@Column(name="POWERPLAY_POINTS")
 	private Integer powerPlayPoints;
+  
 	@Column(name="SHORTHANDED_GOALS")
 	private Integer shortHandedGoals;
+  
 	@Column(name="SHORTHANDED_POINTS")
 	private Integer shortHandedPoints;
+  
 	@Column(name="GAME_WINNING_GOALS")
 	private Integer gameWinningGoals;
+  
 	@Column(name="OVERTIME_GOALS")
 	private Integer overtimeGoals;
+  
 	@Column(name="SHOTS")
 	private Integer shots;
+  
 	@Column(name="SHOT_PERCENTAGE", columnDefinition="decimal", precision=18, scale=2)
 	private BigDecimal shotPercentage;
+  
 	@Column(name="FACEOFF_WIN_PERCENTAGE", columnDefinition="decimal", precision=18, scale=2)
 	private BigDecimal faceoffWinPercentage;
 	

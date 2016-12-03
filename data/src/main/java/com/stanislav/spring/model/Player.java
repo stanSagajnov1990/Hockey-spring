@@ -37,34 +37,47 @@ public class Player implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 8475797694864167034L;
+  
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="PLAYER_ID")
 	private Long id;
+  
 	@Column(name="NAME")
 	private String name;
+  
 	@Column(name="AGE")
 	private Integer age;
+  
 	@Column(name="NUMBER")
 	private Integer number;
+  
 	@Column(name="POSITION")
 	private String position;
+  
 	@Temporal(TemporalType.DATE)
 	@Column(name="BIRTH_DATE")
 	private Date birthdate;
+  
 	@Column(name="BIRTH_PLACE")
 	private String birthplace;
+  
 	@Column(name="WEIGHT")
 	private Integer weight;
+  
 	@Column(name="HEIGHT")
 	private Integer height;
+  
 	@Column(name="IMAGE_URL")
 	private String imageUrl;
+  
 	@Column(name="BIG_IMAGE_URL")
 	private String bigImageUrl;
+  
 	//TODO write UnitTest for Fetch Eager and Lazy
 	@OneToMany(mappedBy="player")
 	private List<PlayerStatistics> playerStatistics = new ArrayList<PlayerStatistics>();
+  
 	@OneToMany(mappedBy="player")
 	private List<GoalieStatistics> goalieStatistics = new ArrayList<GoalieStatistics>();
 

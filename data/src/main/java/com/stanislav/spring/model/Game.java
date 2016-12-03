@@ -25,25 +25,33 @@ public class Game implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 3510589234875463681L;
+  
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="GAME_ID")
 	private Long id;
+  
 	@ManyToOne
 	@JoinColumn(name="HOME_TEAM_ID",nullable=false)
 	private Team homeTeam;
+  
 	@ManyToOne
 	@JoinColumn(name="AWAY_TEAM_ID",nullable=false)
 	private Team awayTeam;
+  
 	@Column(name="HOME_TEAM_SCORE")
 	private Integer homeTeamScore;
+  
 	@Column(name="AWAY_TEAM_SCORE")
 	private Integer awayTeamScore;
+  
 	@Column(name="GAME_DATE")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date gameDate;
+  
 	@Column(name="OT")
 	private boolean winInOvertime;
+  
 	@Column(name="SO")
 	private boolean winInShootout;
 	

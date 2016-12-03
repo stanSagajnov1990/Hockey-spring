@@ -25,6 +25,7 @@ public class Team implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = -3389774397827939750L;
+  
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "TEAM_ID")
@@ -32,6 +33,7 @@ public class Team implements Serializable {
 
 	@Column(name = "NAME")
 	private String name;
+  
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "team")
 	private List<Player> players = new ArrayList<Player>();
 
